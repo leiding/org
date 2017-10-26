@@ -1,0 +1,14 @@
+* Setup jenkins for security scan
+** prepare
+   1. cd /dbc/pa-dbc1104/leiding/vsantest
+   2. source vir_py2.7.13/bin/activate
+** script commands for different scan
+1. /build/toolchain/lin64/python-2.7.11-openssl1.0.1r/bin/python -u main.py --testbedInfoJsonFile testbedInfo.json --vcBuild ob-6943835 --esxBuild ob-6960360 --tool qualys --platform Linux --email leiding --vcBranch layer1 --vcCln 	5588732 --esxBranch layer1 --esxCln 5593012
+   2. /toolchain/lin64/python-2.7.11-openssl1.0.1r/bin/python -u /build/trees/vim-main/vcqe/securityautomation/main.py --testbedInfoJsonFile /testbedInfo.json --vcBuild sb-11495283 --esxBuild sb-11494522 --tool nexpose --platform Linux --email  leiding -vcBranch vmcore-main --vcCln 5577640 --esxBranch vmcore-main --esxCln 5577640
+3. /toolchain/lin64/python-2.7.11-openssl1.0.1r/bin/python -u main.py --testbedInfoJsonFile /testbedInfo.json --vcBuild sb-11495283 --esxBuild sb-11494522 --tool nessus --platform Linux --email leiding --vcBranch vmcore-main --vcCln 5577640 --esxBranch vmcore-main --esxCln 5577640
+** prepare script dir within dbc
+   1. wget https://opengrok.eng.vmware.com/source/xref/vim-main.perforce.1666/vcqe/securityautomation/
+   2. deploy the testbed and save the testbedInfo.json file
+   3. script to get the build number, cln number 
+
+

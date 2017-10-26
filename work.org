@@ -1,0 +1,11 @@
+* Bug veriry
+** TODO Python3, need ask rae for the python3 build
+
+* SDK Test
+** TODO Need build jenkins jobs since the serve has gone
+** TODO Enhance the sample running script, need seed some text
+
+* VDFS Test
+** Explore test
+** svs setup
+** Test code 

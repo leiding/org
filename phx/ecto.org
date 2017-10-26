@@ -1,0 +1,6 @@
+* Understand phx.gen.*
+** Understand ecto related gen task 
+*** phx.gen.schemal
+Inputs: module name,plural name, table name(equals plural name by), fields 
+*** phx.gen.context 
+*** phx.gen.embedded

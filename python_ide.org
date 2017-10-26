@@ -1,0 +1,12 @@
+* Setup python IDE with emacs
+** prepare
+** configue
+** Tips
+   1. setup project, after emacs restart, the previous filed should be opend
+      1. We use (require 'desktop+) to make the desktop saver extramely easy 
+         by using commands desktop-create,desktop-load, the desktop will be saved automaticly when emacs exit
+   2. Enable elpy mode
+   3. windows setup, 1 for help, 1 for code, 1 for shell
+   4. interactive develop and debug
+   5. code navagation skill
+      

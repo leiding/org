@@ -1,0 +1,30 @@
+* 理解Emacs配置文件
+https://www.zybuluo.com/qqiseeu/note/17692
+https://www.zybuluo.com/qqiseeu/note/17692
+https://www.google.com/search?q=emacs.d+%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84&rlz=1C5CHFA_enCN685&oq=emacs.d+%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84&aqs=chrome..69i57.9964j0j4&sourceid=chrome&ie=UTF-8
+** init.el
+Emacs会自动从init.el开始执行
+加载插件配置，通过load-path变量来定义插件搜索路径，通过require来加载插件配置
+** init-elpa.el
+配置elpa，包括软件仓库的路径
+提供require-package函数，该函数会判断某个包是否安装，如果没有安装会自动从elpa下载
+** 修改配置文件以后如何生效
+
+* 如何安装新的插件
+** 默认方法
+有了elpa，安装新的插件只要在lisp目录添加文件init-example.el，然后在init.el包含这个文件，elpa会自动
+** TODO 如何手动下载包来安装？
+
+* TODO 理解emacs.d的目录结构
+
+* Tips
+
+** Check what's current major mode
+   help, v, major-mode
+** Check current enabled mode
+   describe-mode
+** TODO How to get current mode's help doc?
+** TODO How to configue current mode?
+** How to work with read-only file?
+   After changing the file mode, and before doing any edit, run M-x revert-buffer to reload the file. If the file is now writable, the buffer will no longer read-only.
+   Alternatively, type C-x C-q (toggle-read-only). This makes the buffer no longer read-only. You can edit and even save, but you'll get a confirmation prompt asking whether you want to overwrite the read-only file.

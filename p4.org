@@ -1,0 +1,26 @@
+** client template
+Client: pa-storage-main
+
+Update: 2017/10/19 20:03:49
+
+Access: 2017/10/19 23:48:24
+
+Owner:  leiding
+
+Description:
+        Created by leiding.
+
+Root:   /home/lei/test-vpxes/storage-main
+
+AltRoots:
+        E:\test-vpx
+
+Options:        noallwrite noclobber nocompress unlocked nomodtime normdir
+
+SubmitOptions:  submitunchanged
+
+LineEnd:        local
+
+View:
+        //depot/bora/storage-main/... //pa-storage-main/bora/...
+        //depot/scons/storage-main/... //pa-storage-main/scons/...
