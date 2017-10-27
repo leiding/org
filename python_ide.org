@@ -1,6 +1,12 @@
 * Setup python IDE with emacs
 ** prepare
 ** configue
+   1. Disable tab highlights for python mode
+      - Use M-x customize-variable RET elpy-modules RET and remove the checkbox from the "highlight indentation" line.
+      - Have you tried M-x highlight-indentation ? This should toggle the highlight state of indentation.Also if you want to permanently enable/disable this you can checkout Elpy Default Minor modes by doing a M-x customize-group elpy
+   2. enable virtualenv
+      
+
 ** Tips
    1. setup project, after emacs restart, the previous filed should be opend
       1. We use (require 'desktop+) to make the desktop saver extramely easy 

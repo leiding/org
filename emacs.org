@@ -8,17 +8,20 @@ Emacs会自动从init.el开始执行
 ** init-elpa.el
 配置elpa，包括软件仓库的路径
 提供require-package函数，该函数会判断某个包是否安装，如果没有安装会自动从elpa下载
-** 修改配置文件以后如何生效
+** TODO 修改配置文件以后如何生效
+** TODO 修改配置的方法
+   - customize-group
+   - customize-variable
 
 * 如何安装新的插件
 ** 默认方法
 有了elpa，安装新的插件只要在lisp目录添加文件init-example.el，然后在init.el包含这个文件，elpa会自动
 ** TODO 如何手动下载包来安装？
 
+* TODO 配置的保存和同步
+
 * TODO 理解emacs.d的目录结构
-
 * Tips
-
 ** Check what's current major mode
    help, v, major-mode
 ** Check current enabled mode
@@ -28,3 +31,6 @@ Emacs会自动从init.el开始执行
 ** How to work with read-only file?
    After changing the file mode, and before doing any edit, run M-x revert-buffer to reload the file. If the file is now writable, the buffer will no longer read-only.
    Alternatively, type C-x C-q (toggle-read-only). This makes the buffer no longer read-only. You can edit and even save, but you'll get a confirmation prompt asking whether you want to overwrite the read-only file.
+** TODO edit/undo/redo [P0]
+** Protect import file
+   we could set the buffer to read-only mode by ctl x , ctl q
