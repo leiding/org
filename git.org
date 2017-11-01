@@ -1,0 +1,4 @@
+* Use git to manage my emacs, test tool
+** Connect current dir to remote repo in git
+** Work with branch
+
