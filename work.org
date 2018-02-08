@@ -1,4 +1,7 @@
-* Bug veriry
+* CANCELLED Bug veriry
+  CLOSED: [2018-01-19 Fri 11:16]
+  - State "STARTED"    from "DONE"       [2018-01-19 Fri 11:16]
+  - State "DONE"       from "STARTED"    [2018-01-19 Fri 11:16]
 ** TODO Python3, need ask rae for the python3 build
 
 * SDK Test
@@ -9,3 +12,79 @@
 ** Explore test
 ** svs setup
 ** Test code 
+* How to add vdfs unit test to svs?
+  1) we need understand how test-esx-vsan work 
+  Run: "/mts/git/bin/nimbus-test-launcher --waitForCompletion true --esxPxeDir /mts/builder-pxe/svs/449591/svs-test-esx-vsanrp --esxBoraDir /storage61/release/sb-13304671/bora --plugin test-esx --test test-esx --testesxTest 'vsandp/ReplicaProvisionTest.py'"
+  
+  ./lib/testframeworks/test-esx/test-esx.rb
+
+  ssh.open_channel do |chan|
+        chan.exec("env VSANTREE=#{@@vsanTree} TESTESXTREE=#{testesxTree} /bin/nimbus-run-test-esx -n #{test} #{testesxParams}")
+  
+  leiding@tom:~/test-vpxes/storage-main/bora$ find . -name test-esx
+  ./support/scripts/test-esx
+  ./vmkernel/tests/core/test-esx
+
+  
+  "svs-test-esx-vsan": {
+        "default_test_dependencies": [
+            "esxall:obj"
+        ],
+        "frameworks": {
+            "nimbus": {
+                "desc": "NA",
+                "params": [
+                    "--test",
+                    "test-esx-8gbmem",
+                    "--testesxGroup",
+                    "\"vsan\"",
+                    "--plugin",
+                    "test-esx"
+                ],
+                "type": "nimbus-vcqa-launcher"
+            }
+        },
+        "options": {
+            "require_buildtree": [
+                "esxall:obj"
+            ]
+        },
+
+        
+* How to install esx-vsan-test build?
+  esxcli software vib install -f -v viburl
+  ls /test/vmkernel/tests/
+* How test case is selected in svs-esx?
+  1. Test code need add some metadata like test case group, these infor will be build to http://build-squid.eng.vmware.com/build/mts/release/bora-7608567/publish/test-esx-metadata.yaml
+  2. svs will use this file to select the test group https://gitlab.eng.vmware.com/devtools/nimbus/nimbus/blob/master/lib/testframeworks/test-esx/test-esx.rb
+  3. Need register vdfs test metadata into test-esx-metadata file
+     ag test-esx-metadata
+  4. Run test script within esx host
+     ./lib/testframeworks/test-esx/foo.sh
+     ./lib/testframeworks/test-esx/vsan-test-esx-runtime.sh
+ 
+* How to run test-esx on esxi host
+  https://wiki.eng.vmware.com/Testesx
+  Deploy esx 
+
+* Pass the ovfbuild to test and install the vib
+  ./test-esx --group vsan_vdfs --extratestparam "vdfs_v
+ib_url=http://build-squid.eng.vmware.com/build/mts/release/bora-7747094/publish/VMware-ESXi-6.8.0-7747094-vdfs.zip"
+
+./build/build/gobuild/obj/vdfs.properties
+./build/build/gobuild/beta/vdfs.properties
+
+
+
+
+* Trigger sandbox build
+  gobuild sandbox queue vsanhealthlin --branch vsphere-2015-vsanhealth --changeset 3707290 
+* Restart vsan management
+  /usr/lib/vmware-vmon/vmon-cli -r vsan-health 
+* Run test from nimbus-vcqa-luncher
+  /mts/git/bin/nimbus-vcqa-launcher —vcvaBuild "ob-5435056" —esxBuild "ob-5435055" --waitForCompletion "true" --maxNumTestbeds "1" --test "test-vpx-vsanhealth-vcva-4esx-fullInstall-8gbmem-3disks-allFlash" --memoryReservation "8192" --testvpxParams "-g vsaneasyinstall --include-vsan-pyvmomi-async -x enableDedup=true" --plugin "test-vpx"
+* Run test with nimbus-test-launcher
+  /mts/git/bin/nimbus-test-launcher  --build "ob-6085036" --build "ob-6089078"  --dynamicWorker --dynamicWorkerCpus 2 --dynamicWorkerMemMB 4096 --nimbusResourcePool cat "--test" "test-vsan-uniform-8esx-fullInstall-vcva-32gbmem" "--runName" "vsan-unicast-lptc-clusterpartition" "--testbedSpecJsonFile" "/mts/home4/mmaung/nimbus-json/testBedSpec_8esx_4ssd_4md_50gb.json" "--testvpxParams" "-i vsan.fvt.test.newcmmds.unicast.clusterpartition.py --vsan-fvt --include-vsan-pyvmomi-async -x priority=P2 -x allflash=1 -x privateIp=False -x useExistingSetUp=False  -x enableHealthVerifications=True -x useDvs=True -x runTestAnalysis=True --skip-cleanup --serial-only -x observer=False --esx-netdump-server=10.156.0.102" "--keepVMsOnFailure" --resultsDir /mts/home4/leiding/testrun/ --testvpxBoraPath /dbc/pa-dbc1104/leiding/test-vpxes/storage-main  --plugin test-vsan --debug-mode 
+*
+ 
+* 

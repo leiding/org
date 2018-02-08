@@ -15,7 +15,7 @@ Emacs会自动从init.el开始执行
 
 * 如何安装新的插件
 ** 默认方法
-有了elpa，安装新的插件只要在lisp目录添加文件init-example.el，然后在init.el包含这个文件，elpa会自动
+有了elpa，安装新的插件只要在lisp目录添加文件init-example.el，(require-package 'name) 会判断是否已经安装，然后在init.el包含这个文件(require 'init-example.el)，elpa会自动
 ** TODO 如何手动下载包来安装？
 
 * TODO 配置的保存和同步
@@ -34,3 +34,11 @@ Emacs会自动从init.el开始执行
 ** TODO edit/undo/redo [P0]
 ** Protect import file
    we could set the buffer to read-only mode by ctl x , ctl q
+** copy colums and paste on one line with sep
+** start elixir mode with alchemist
+** indent code
+   C-M-\ (indent-region)
+** replace string
+   query-replace M-%, thing ENT, replaced thing ENT, y/n
+** back to previous place in elpy-python mode
+   dump-jump-back (C-M-P)

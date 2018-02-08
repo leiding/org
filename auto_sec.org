@@ -11,4 +11,12 @@
    2. deploy the testbed and save the testbedInfo.json file
    3. script to get the build number, cln number 
 
+      
+* Script to run app check for M2C
+  1. cd ~/vsantest
+  2. check site https://confluence.eng.vmware.com/pages/viewpage.action?spaceKey=EO&title=Petronas+Recommended+builds#PetronasRecommendedbuilds-M3-Cycle-1to get the build number 
+  3. Run script: python main.py --vcBuild ob-7380748 --vcBranch cloud --esxBuild ob-7380746  --email leiding --tool appcheck
 
+* Script to run all branch app check
+  1. cd ~/vsantest
+  2. python main.py --email leiding --tool appcheck
